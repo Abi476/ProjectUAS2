@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="226" pageHeight="841" columnWidth="201" leftMargin="14" rightMargin="11" topMargin="0" bottomMargin="0" uuid="88e4cf8a-5cf9-49ce-874c-d094e7f0cc49">
-	<property name="ireport.zoom" value="3.1384283767210035"/>
+	<property name="ireport.zoom" value="2.2578957202151093"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="766"/>
 	<queryString>
 		<![CDATA[select * from Transaksi;]]>
 	</queryString>
@@ -51,14 +51,14 @@
 	<title>
 		<band height="95" splitType="Stretch">
 			<staticText>
-				<reportElement x="39" y="46" width="127" height="21" uuid="e2060fea-c6cd-4139-a0d5-5ec37fb57db7"/>
+				<reportElement x="34" y="39" width="127" height="21" uuid="e2060fea-c6cd-4139-a0d5-5ec37fb57db7"/>
 				<textElement textAlignment="Center">
 					<font fontName="Segoe UI" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Biru Hijau Production]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="39" y="67" width="127" height="28" uuid="9efa1ab3-9ae6-4058-ad20-1264343c7b86"/>
+				<reportElement x="34" y="60" width="127" height="28" uuid="9efa1ab3-9ae6-4058-ad20-1264343c7b86"/>
 				<textElement textAlignment="Center">
 					<font isItalic="true"/>
 				</textElement>
@@ -70,107 +70,106 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="59" splitType="Stretch">
+		<band height="278" splitType="Stretch">
+			<staticText>
+				<reportElement x="-5" y="31" width="201" height="21" uuid="1d6ee1ae-7002-4451-bd83-1d0f125e3cae"/>
+				<text><![CDATA[=====================================]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="66" y="15" width="100" height="20" uuid="9d5d8099-5e7c-4bcc-ac6c-9afcf54ffcaf"/>
+				<reportElement x="61" y="8" width="100" height="20" uuid="9d5d8099-5e7c-4bcc-ac6c-9afcf54ffcaf"/>
 				<textFieldExpression><![CDATA[$F{Nama_Pelanggan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="0" width="201" height="20" uuid="dfea2fa9-ec57-43cb-93e0-4c8ce42716d2"/>
+				<reportElement x="-5" y="-7" width="201" height="20" uuid="dfea2fa9-ec57-43cb-93e0-4c8ce42716d2"/>
 				<text><![CDATA[====================================]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="15" width="54" height="20" uuid="5b812802-3498-49bb-9a6d-6c233c6b5ff5"/>
+				<reportElement x="1" y="8" width="54" height="20" uuid="5b812802-3498-49bb-9a6d-6c233c6b5ff5"/>
 				<text><![CDATA[Customer :]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="0" y="38" width="201" height="21" uuid="1d6ee1ae-7002-4451-bd83-1d0f125e3cae"/>
-				<text><![CDATA[=====================================]]></text>
-			</staticText>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="252" splitType="Stretch">
 			<textField>
-				<reportElement x="101" y="20" width="100" height="20" uuid="83a692e2-e170-4994-b12f-7c73cd6b88e8"/>
-				<textFieldExpression><![CDATA[$F{ID_Transaksi}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="101" y="40" width="100" height="20" uuid="10e1a740-c20c-436e-83b5-5308084ff0a5"/>
-				<textFieldExpression><![CDATA[$F{ID_Produk}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="101" y="60" width="100" height="20" uuid="faa77b3e-66ed-4dd7-9dde-92cf2c382b30"/>
-				<textFieldExpression><![CDATA[$F{Nama_Produk}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="101" y="80" width="100" height="20" uuid="15398134-573b-427e-8e14-3ba2920e3040"/>
+				<reportElement x="101" y="108" width="100" height="20" uuid="48c940d4-8db3-46f8-8ba3-42427b5796af"/>
 				<textFieldExpression><![CDATA[$F{Jenis}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="6" y="204" width="81" height="20" uuid="0d064e15-a69d-4d91-9707-f2fb17802871"/>
+				<text><![CDATA[Pembayaran     :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="68" width="76" height="20" uuid="5d13104b-0319-427f-8826-0a05592f58f8"/>
+				<text><![CDATA[ID Produk        :]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="101" y="100" width="100" height="20" uuid="c36be620-976b-4b05-a5ce-66f0cee04f43"/>
+				<reportElement x="101" y="168" width="100" height="20" uuid="96fafe50-e89f-4382-b174-432806060331"/>
+				<textFieldExpression><![CDATA[$F{Harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="128" width="100" height="20" uuid="54e98f66-b4e3-49d4-8caa-3fb95c823d3b"/>
 				<textFieldExpression><![CDATA[$F{Estimasi}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="101" y="120" width="100" height="20" uuid="38e97d79-d0c9-4ce1-b4db-08cea0d02e34"/>
+				<reportElement x="101" y="204" width="100" height="20" uuid="51ffe178-1f05-474c-b031-55a2f5415b22"/>
+				<textFieldExpression><![CDATA[$F{Pembayaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="88" width="100" height="20" uuid="95b7cedb-38ae-4614-a99c-6c9e39cffd73"/>
+				<textFieldExpression><![CDATA[$F{Nama_Produk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="68" width="100" height="20" uuid="38e951ee-c3b0-4db8-a2ec-189e47dfb1bf"/>
+				<textFieldExpression><![CDATA[$F{ID_Produk}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="188" width="201" height="16" uuid="2f6ea0f6-1763-4060-ab09-847ddaf5eb8b"/>
+				<text><![CDATA[=====================================]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="101" y="148" width="100" height="20" uuid="fff8efe3-98bd-42aa-9255-ec57c0fb7ce2"/>
 				<textFieldExpression><![CDATA[$F{Jaminan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="6" y="20" width="76" height="20" uuid="82194795-5cb1-4bbf-965e-f028780022bd"/>
+				<reportElement x="6" y="48" width="76" height="20" uuid="ca3f6170-a9ce-4379-9042-aea4fbdff4cf"/>
 				<text><![CDATA[ID Transaksi    :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="6" y="40" width="76" height="20" uuid="33f894a4-cb8f-4036-b41d-cc7d99421c87"/>
-				<text><![CDATA[ID Produk        :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="6" y="60" width="76" height="20" uuid="b059d398-ec0e-42fd-b0eb-06a475708d85"/>
-				<text><![CDATA[Nama Produk  :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="6" y="80" width="76" height="20" uuid="506e7121-af0c-4bfc-a335-3d6cddb4dc2e"/>
-				<text><![CDATA[Jenis               :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="6" y="100" width="76" height="20" uuid="5da3e53e-36f6-4c31-bed0-1ae2670e914f"/>
-				<text><![CDATA[Estimasi          :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="6" y="120" width="76" height="20" uuid="c96f6173-51ee-4d25-9478-4ac6e85d5b8f"/>
-				<text><![CDATA[Jaminan          :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="101" y="140" width="100" height="20" uuid="b0063a1f-2908-415f-b95b-2b859cbce61b"/>
-				<textFieldExpression><![CDATA[$F{Harga}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="6" y="140" width="76" height="20" uuid="dbcc0cf5-5f88-4755-8987-ce34240dd96c"/>
-				<text><![CDATA[Harga              :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="160" width="201" height="16" uuid="df7c3636-e511-442a-ac57-fe5d7c6835d6"/>
-				<text><![CDATA[=====================================]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="6" y="176" width="81" height="20" uuid="2219cc3b-89ae-469e-89eb-35ff64fe24ac"/>
-				<text><![CDATA[Pembayaran     :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="101" y="176" width="100" height="20" uuid="b15a06aa-caf6-4633-9d33-5d4df6c1216c"/>
-				<textFieldExpression><![CDATA[$F{Pembayaran}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="0" y="196" width="201" height="13" uuid="0160d60b-aad1-4f07-86c9-278c15b6e708"/>
+				<reportElement x="0" y="224" width="201" height="13" uuid="fc5ed2f8-83d8-4816-be9c-97068e2b5f9b"/>
 				<text><![CDATA[====================================]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="47" y="209" width="100" height="20" uuid="9c778091-5057-4977-b398-1cb2c1b69b62"/>
+				<reportElement x="6" y="108" width="76" height="20" uuid="c543f900-b2f5-4be8-a7f5-6d1d47ef9c05"/>
+				<text><![CDATA[Jenis               :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="88" width="76" height="20" uuid="a18e6ce6-5553-4ffe-9c91-62860e9dfa65"/>
+				<text><![CDATA[Nama Produk  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="148" width="76" height="20" uuid="e3bf7483-20f6-41d3-a838-eb162d9e9c8a"/>
+				<text><![CDATA[Jaminan          :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="128" width="76" height="20" uuid="3e513971-0e47-45e0-b4ea-b6042cffb909"/>
+				<text><![CDATA[Estimasi          :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="237" width="100" height="20" uuid="ba0cd64b-3cc4-41a9-8448-85c762d2ba32"/>
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[TERIMA KASIH]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="6" y="168" width="76" height="20" uuid="823524c3-207f-4198-9540-5dc8b8167ca0"/>
+				<text><![CDATA[Harga              :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="101" y="48" width="100" height="20" uuid="d4edbd6f-4367-4af9-bc93-d39793fab464"/>
+				<textFieldExpression><![CDATA[$F{ID_Transaksi}]]></textFieldExpression>
+			</textField>
 		</band>
+	</columnHeader>
+	<detail>
+		<band height="252" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
 		<band splitType="Stretch"/>
