@@ -264,8 +264,7 @@ public class Dashboard extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addGroup(jPanel10Layout.createSequentialGroup()
                                 .addGap(113, 113, 113)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel10)))
                         .addGap(521, 521, 521)))
                 .addComponent(jTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(84, 84, 84))
@@ -308,6 +307,7 @@ public class Dashboard extends javax.swing.JFrame {
         jSewa.setText("Katalog Sewa");
         jSewa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jSewa.setBorderPainted(false);
+        jSewa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jSewa.setMaximumSize(new java.awt.Dimension(88, 23));
         jSewa.setMinimumSize(new java.awt.Dimension(88, 23));
         jSewa.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,6 +324,7 @@ public class Dashboard extends javax.swing.JFrame {
         jTransaksi.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
         jTransaksi.setText("Transaksi");
         jTransaksi.setBorderPainted(false);
+        jTransaksi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTransaksi.setPreferredSize(new java.awt.Dimension(103, 23));
         jTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -339,6 +340,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPengembalian.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
         jPengembalian.setText("Pengembalian");
         jPengembalian.setBorderPainted(false);
+        jPengembalian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPengembalianMouseClicked(evt);
@@ -354,6 +356,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLogout.setFont(new java.awt.Font("Poppins ExtraBold", 0, 12)); // NOI18N
         jLogout.setForeground(new java.awt.Color(255, 255, 255));
         jLogout.setText("Log Out");
+        jLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLogoutMouseClicked(evt);
@@ -369,6 +372,7 @@ public class Dashboard extends javax.swing.JFrame {
         jGaji.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
         jGaji.setText("Gaji");
         jGaji.setBorderPainted(false);
+        jGaji.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jGaji.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jGajiMouseClicked(evt);

@@ -2,7 +2,6 @@ package Login;
 import KoneksiDB.KoneksiDB;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import Transaksi.Transaksi;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -52,6 +51,9 @@ public class SignUp extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProjectUAS2/Group 333.png"))); // NOI18N
 
+        jUser2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jpassword2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jpassword2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jpassword2ActionPerformed(evt);
@@ -66,6 +68,7 @@ public class SignUp extends javax.swing.JFrame {
 
         jSpassword.setFont(new java.awt.Font("Geometria", 1, 12)); // NOI18N
         jSpassword.setText("Show Password");
+        jSpassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jSpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSpasswordActionPerformed(evt);
@@ -76,6 +79,7 @@ public class SignUp extends javax.swing.JFrame {
         jSignup.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         jSignup.setForeground(new java.awt.Color(255, 255, 255));
         jSignup.setText("Sign up");
+        jSignup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSignupActionPerformed(evt);

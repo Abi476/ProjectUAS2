@@ -58,6 +58,7 @@ public class Login extends javax.swing.JFrame {
         jBlogin.setFont(new java.awt.Font("Poppins Medium", 1, 12)); // NOI18N
         jBlogin.setForeground(new java.awt.Color(255, 255, 255));
         jBlogin.setText("Log in");
+        jBlogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBloginActionPerformed(evt);
@@ -66,6 +67,7 @@ public class Login extends javax.swing.JFrame {
 
         jSpassword.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
         jSpassword.setText("Show password");
+        jSpassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jSpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jSpasswordActionPerformed(evt);
@@ -82,12 +84,14 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Poppins SemiBold", 0, 12)); // NOI18N
         jLabel4.setText("Selamat datang kembali!");
 
+        jPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordActionPerformed(evt);
             }
         });
 
+        jUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jUserActionPerformed(evt);
@@ -110,6 +114,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Poppins ExtraLight", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Sign in");
+        jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -118,7 +123,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Poppins ExtraLight", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Ingin Menambahkan Akun?");
+        jLabel9.setText("Ingin Menambahkan User?");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

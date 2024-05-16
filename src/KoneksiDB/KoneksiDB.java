@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.sql.SQLException;
 
 public class KoneksiDB {
-
     public Connection con;
     private final String driver = "com.mysql.cj.jdbc.Driver";
     private final String url = "jdbc:mysql://localhost:3306/sibhp";
@@ -19,11 +18,16 @@ public class KoneksiDB {
             Class.forName(driver);
             con = DriverManager.getConnection(url, user, pwd);
             System.out.println("Koneksi Berhasil");
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Error:\nKoneksi Data Gagal\n");
             e.printStackTrace();
         }
     }
+
+    public Connection getConnection() {
+        return con;
+    }
+
 
     public ResultSet ambilData(String SQL) {
         try {
