@@ -1,4 +1,5 @@
 package Login;
+
 import KoneksiDB.KoneksiDB;
 import java.sql.ResultSet;
 import Dashboard.Dashboard;
@@ -6,17 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Transaksi.Transaksi;
 
-
 /**
  *
  * @author KahfiAdam
  */
 public class Login extends javax.swing.JFrame {
+
     KoneksiDB db = new KoneksiDB();
-    Dashboard Dashboard = new Dashboard();
+    Dashboard Dashboard = new Dashboard("");
     SignUp SignUp = new SignUp();
     Transaksi Transaksi = new Transaksi();
-    
+
     /**
      * Creates new form Login
      */
@@ -205,48 +206,65 @@ public class Login extends javax.swing.JFrame {
 
     private void jUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUserActionPerformed
         // TODO add your handling code here:
+        ResultSet rs = db.ambilData("select * from user where username = '" + jUser.getText() + "'");
+        try {
+            if (rs.next()) {
+                jUser.setText("");
+                int asn = JOptionPane.showConfirmDialog(null, "Apakah Anda Akan Login sebagai User: '" + rs.getString("Username") + "'deangsn role: '" + rs.getString("Role") + "'?");
+                if (asn == JOptionPane.YES_OPTION) {
+                    Dashboard Dashboard = new Dashboard(rs.getString("Username"));
+                    Dashboard.setVisible(true);
+                    this.dispose();
+                }
+            }
+            jUser.setText("");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        jPassword.requestFocus();
     }//GEN-LAST:event_jUserActionPerformed
 
     private void jBloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBloginActionPerformed
         // TODO add your handling code here:
-      boolean sukses = false;
-    String role = "";
-    try {
-        ResultSet rs = db.ambilData("select * from user");
-        if (jUser.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Tolong masukkan username!");
-        } else if (jPassword.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Tolong Masukkan password!");
-        } else {
-            while (rs.next()) {
-                System.out.println(jPassword.getText());
-                if (jUser.getText().equals(rs.getString("Username")) && jPassword.getText().equals(rs.getString("Password"))) {
-                    role = rs.getString("Role"); // Mendapatkan peran pengguna dari database
-                    JOptionPane.showMessageDialog(null, "Login Berhasil sebagai " + role);
-                    this.setVisible(false);
-                    if (role.equals("Admin")) {
-                        // Tampilkan tampilan admin
-                        Dashboard.setVisible(true);
-                    } else if (role.equals("User")) {
-                        // Tampilkan tampilan user
-                        Transaksi.setVisible(true);
+        boolean sukses = false;
+        String role = "";
+        try {
+            ResultSet rs = db.ambilData("select * from user");
+            if (jUser.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Tolong masukkan username!");
+            } else if (jPassword.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Tolong Masukkan password!");
+            } else {
+                while (rs.next()) {
+                    System.out.println(jPassword.getText());
+                    if (jUser.getText().equals(rs.getString("Username")) && jPassword.getText().equals(rs.getString("Password"))) {
+                        role = rs.getString("Role"); // Mendapatkan peran pengguna dari database
+                        JOptionPane.showMessageDialog(null, "Login Berhasil sebagai " + role);
+                        this.setVisible(false);
+                        if (role.equals("Admin")) {
+                            // Tampilkan tampilan admin
+                            Dashboard.setVisible(true);
+                        } else if (role.equals("User")) {
+                            // Tampilkan tampilan user
+                            Transaksi.setVisible(true);
+                        }
+                        sukses = true;
+                        break;
                     }
-                    sukses = true;
-                    break;
+                }
+                if (!sukses) {
+                    JOptionPane.showMessageDialog(null, "Username atau Password salah!!!", "Message", JOptionPane.ERROR_MESSAGE);
                 }
             }
-            if (!sukses){
-                JOptionPane.showMessageDialog(null, "Username atau Password salah!!!", "Message", JOptionPane.ERROR_MESSAGE);
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }                                  
     }//GEN-LAST:event_jBloginActionPerformed
 
     private void jSpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSpasswordActionPerformed
         // TODO add your handling code here:
-         if (jSpassword.isSelected()) {
+        if (jSpassword.isSelected()) {
             jPassword.setEchoChar((char) 0);
         } else {
             jPassword.setEchoChar('*');
@@ -255,6 +273,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
         // TODO add your handling code here:
+        jBlogin.requestFocus();
     }//GEN-LAST:event_jPasswordActionPerformed
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked

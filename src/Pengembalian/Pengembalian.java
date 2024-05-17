@@ -30,7 +30,7 @@ import javax.swing.JComboBox;
  * @author abiba
  */
 public class Pengembalian extends javax.swing.JFrame {
-    Dashboard Dashboard = new Dashboard();
+  //  Dashboard Dashboard = new Dashboard();
     Sewa Sewa = new Sewa();
     Transaksi Transaksi = new Transaksi();
     DefaultTableModel dtm = new DefaultTableModel();
@@ -516,8 +516,8 @@ public class Pengembalian extends javax.swing.JFrame {
 
     private void jDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDashboardActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        Dashboard.setVisible(true);
+       // this.setVisible(false);
+        //Dashboard.setVisible(true);
     }//GEN-LAST:event_jDashboardActionPerformed
 
     private void jSewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSewaActionPerformed

@@ -27,7 +27,7 @@ public class Dashboard extends javax.swing.JFrame {
     Transaksi Transaksi = new Transaksi();
     KoneksiDB KoneksiDB = new KoneksiDB();
     DefaultTableModel dtm = new DefaultTableModel();
-    public Dashboard() {
+    public Dashboard(String Username) {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         waktu();
@@ -742,7 +742,7 @@ public class Dashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new Dashboard("").setVisible(true);
             }
         });
     }
