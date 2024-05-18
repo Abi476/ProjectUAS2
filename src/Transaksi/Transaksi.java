@@ -479,9 +479,11 @@ public class Transaksi extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1795, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 86, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(1199, Short.MAX_VALUE)
                 .addGroup(jPanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTransaksiLayout.createSequentialGroup()
+                        .addComponent(jCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
                         .addComponent(jHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -492,8 +494,6 @@ public class Transaksi extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(374, 374, 374))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTransaksiLayout.createSequentialGroup()
-                        .addComponent(jCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
                         .addComponent(jPengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(146, 146, 146))))
         );
@@ -512,7 +512,7 @@ public class Transaksi extends javax.swing.JFrame {
                     .addGroup(jPanelTransaksiLayout.createSequentialGroup()
                         .addGroup(jPanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTransaksiLayout.createSequentialGroup()
-                                .addGap(0, 180, Short.MAX_VALUE)
+                                .addGap(0, 181, Short.MAX_VALUE)
                                 .addComponent(jJaminan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanelTransaksiLayout.createSequentialGroup()
                                 .addGroup(jPanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -550,14 +550,13 @@ public class Transaksi extends javax.swing.JFrame {
                 .addGroup(jPanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(114, 114, 114)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addComponent(jPengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -681,7 +680,7 @@ public class Transaksi extends javax.swing.JFrame {
         String Harga = (String) jHarga.getText();
         String Pembayaran = (String) jComboPembayaran.getSelectedItem();
 
-        KoneksiDB.aksi("UPDATE Transaksi SET Jaminan = '" + jJaminan1.getText() + "', Estimasi = '" + String.valueOf(jComboEstimasi.getSelectedItem()) + "', Harga = '" + jHarga.getText() + "', ID_Transaksi = '" + jIDtransaksi.getText() + "', ID_Produk = '" + (String) jComboIDBox.getSelectedItem() + "', Nama_Pelanggan = '" + jNamaPelanggan.getText() + "', Jenis = '" + jJenis.getText() + "', Nama_Produk = '" + jNamaProduk.getText() + "', Pembayaran = '" + jComboPembayaran.getSelectedItem() + "' WHERE ID_Transaksi = '" + jIDtransaksi.getText() + "'");
+        KoneksiDB.aksi("UPDATE Transaksi SET Jaminan = '" + jJaminan1.getText() + "', Estimasi = '" + String.valueOf(jComboEstimasi.getSelectedItem()) + "', Harga = '" + jHarga.getText() + "', Nama_Pelanggan = '" + jNamaPelanggan.getText() + "',ID_Transaksi = '" + jIDtransaksi.getText() + "', ID_Produk = '" + (String) jComboIDBox.getSelectedItem() + "', Jenis = '" + jJenis.getText() + "', Nama_Produk = '" + jNamaProduk.getText() + "', Pembayaran = '" + jComboPembayaran.getSelectedItem() + "' WHERE ID_Transaksi = '" + jIDtransaksi.getText() + "'");
         AturBaris();
         AturBaris2();
         jIDtransaksi.setText("");

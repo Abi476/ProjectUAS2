@@ -3,18 +3,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Sewa;
+
 import Transaksi.Transaksi;
 import javax.swing.table.DefaultTableModel;
 import KoneksiDB.KoneksiDB;
+import com.barcodelib.barcode.Linear;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.LuminanceSource;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.Reader;
+import com.google.zxing.Result;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.common.HybridBinarizer;
+import com.lowagie.text.pdf.Barcode;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.ResultSet;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+
 /**
  *
  * @author abiba
  */
 public class Sewa extends javax.swing.JFrame {
+
     DefaultTableModel dtm = new DefaultTableModel();
     KoneksiDB KoneksiDB = new KoneksiDB();
+
     /**
      * Creates new form Sewa
      */
@@ -23,6 +46,7 @@ public class Sewa extends javax.swing.JFrame {
         AturKolom();
         AturBaris();
         generateIDproduk();
+        ViewBarcode();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
@@ -69,7 +93,9 @@ public class Sewa extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } public String getInitialIDByType(String jenis) {
+    }
+
+    public String getInitialIDByType(String jenis) {
         // Menyesuaikan ID awal berdasarkan jenis
         switch (jenis) {
             case "Aksesoris":
@@ -81,6 +107,43 @@ public class Sewa extends javax.swing.JFrame {
             default:
                 return "000000"; // Nilai default jika jenis tidak ditemukan
         }
+    }
+
+    public void ViewBarcode() {
+        String barcodeImg = jTextIDproduk.getText(); // ambil nilai dari TextField jIdProduk
+        BufferedImage barcode = generateBarcode(barcodeImg);
+        ImageIcon icon = new ImageIcon(barcode);
+        jBarcodeView.setIcon(icon);
+    }
+
+    private BufferedImage generateBarcode(String barcodeIMG) {
+        int width = 261;
+        int height = 81;
+
+        try {
+            BitMatrix bitMatrix = new MultiFormatWriter().encode(
+                    barcodeIMG,
+                    BarcodeFormat.CODE_128,
+                    width,
+                    height
+            );
+
+            BufferedImage barcode = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    barcode.setRGB(x, y, bitMatrix.get(x, y) ? 0xFF000000 : 0xFFFFFFFF);
+                }
+            }
+
+            return barcode;
+        } catch (WriterException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void showBarcode(java.awt.event.ActionEvent evt) {
+        showBarcode();
     }
 
     /**
@@ -115,8 +178,9 @@ public class Sewa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jBarcode = new javax.swing.JTextField();
         jComboJenis = new javax.swing.JComboBox<>();
+        jAddBarcode = new javax.swing.JButton();
+        jBarcodeView = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -267,13 +331,18 @@ public class Sewa extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Poppins Light", 0, 18)); // NOI18N
         jLabel9.setText("Barcode");
 
-        jBarcode.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
         jComboJenis.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jComboJenis.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Pilih Jenis --", "Aksesoris", "Jasa", "Kamera" }));
         jComboJenis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboJenisActionPerformed(evt);
+            }
+        });
+
+        jAddBarcode.setText("ADD");
+        jAddBarcode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAddBarcodeActionPerformed(evt);
             }
         });
 
@@ -308,11 +377,14 @@ public class Sewa extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jBarcode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jHarga)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jBarcodeView, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jAddBarcode)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -338,32 +410,37 @@ public class Sewa extends javax.swing.JFrame {
                     .addComponent(jHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextIDproduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jNamaProduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(1, 1, 1)))
-                        .addGap(2, 2, 2))
-                    .addComponent(jScrollPane2))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(99, 99, 99)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBarcode, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jJumlahStok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))))
-                .addGap(20, 20, 20)
+                            .addComponent(jLabel9)
+                            .addComponent(jAddBarcode)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jNamaProduk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel8)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboJenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(1, 1, 1)))
+                                .addGap(2, 2, 2))
+                            .addComponent(jScrollPane2))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel6))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(jBarcodeView, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -415,7 +492,7 @@ public class Sewa extends javax.swing.JFrame {
         String Deskripsi = (String) jTextDescription.getText();
 
         KoneksiDB.aksi("INSERT INTO Stok Values('" + ID_Produk + "','" + Nama_Produk + "','" + Jenis + "','" + Jumlah_Stok + "','" + Harga + "','" + Deskripsi + "')");
-        AturBaris(); 
+        AturBaris();
         jTextIDproduk.setText("");
         jNamaProduk.setText("");
         jComboJenis.setSelectedItem("");
@@ -471,7 +548,7 @@ public class Sewa extends javax.swing.JFrame {
         int n = jStok.getSelectedRow();
         jTextIDproduk.setText(String.valueOf(jStok.getValueAt(n, 0)));
         jNamaProduk.setText(String.valueOf(jStok.getValueAt(n, 1)));
-        jComboJenis.setSelectedItem(String.valueOf(jStok.getValueAt(n,2)));
+        jComboJenis.setSelectedItem(String.valueOf(jStok.getValueAt(n, 2)));
         jJumlahStok.setText(String.valueOf(jStok.getValueAt(n, 3)));
         jHarga.setText(String.valueOf(jStok.getValueAt(n, 4)));
         jTextDescription.setText(String.valueOf(jStok.getValueAt(n, 5)));
@@ -480,27 +557,41 @@ public class Sewa extends javax.swing.JFrame {
     private void jComboJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboJenisActionPerformed
         // TODO add your handling code here:
         if (!jComboJenis.getSelectedItem().equals("--Pilih Item--")) {
-        String jenis = jComboJenis.getSelectedItem().toString();
-        String query = "SELECT * FROM Stok WHERE Jenis = '" + jenis + "' ORDER BY ID_Produk DESC";
-        ResultSet rs = KoneksiDB.ambilData(query);
-        try {
-            if (rs.next()) {
-                String id = rs.getString("ID_Produk");
-                String categoryCode = id.substring(0, 2);
-                String idNumber = id.substring(2);
-                int idNum = Integer.parseInt(idNumber);
-                idNum++;
-                String result = categoryCode + String.format("%04d", idNum);
-                jTextIDproduk.setText(result);
-            } else {
-                String initialID = getInitialIDByType(jenis);
-                jTextIDproduk.setText(initialID);
+            String jenis = jComboJenis.getSelectedItem().toString();
+            String query = "SELECT * FROM Stok WHERE Jenis = '" + jenis + "' ORDER BY ID_Produk DESC";
+            ResultSet rs = KoneksiDB.ambilData(query);
+            try {
+                if (rs.next()) {
+                    String id = rs.getString("ID_Produk");
+                    String categoryCode = id.substring(0, 2);
+                    String idNumber = id.substring(2);
+                    int idNum = Integer.parseInt(idNumber);
+                    idNum++;
+                    String result = categoryCode + String.format("%04d", idNum);
+                    jTextIDproduk.setText(result);
+                } else {
+                    String initialID = getInitialIDByType(jenis);
+                    jTextIDproduk.setText(initialID);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+        }
+    }//GEN-LAST:event_jComboJenisActionPerformed
+
+    private void jAddBarcodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddBarcodeActionPerformed
+        // nambah barcode:
+        try {
+            Linear barcode = new Linear();
+            barcode.setType(Linear.CODE128B);
+            barcode.setData(jTextIDproduk.getText());
+            barcode.setI(11.0f);
+            String path = "0001";
+            barcode.renderBarcode("D:\\" + path + ".png");
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    }//GEN-LAST:event_jComboJenisActionPerformed
+    }//GEN-LAST:event_jAddBarcodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -538,7 +629,8 @@ public class Sewa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jBarcode;
+    private javax.swing.JButton jAddBarcode;
+    private javax.swing.JLabel jBarcodeView;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboJenis;
     private javax.swing.JButton jEdit;
@@ -564,4 +656,8 @@ public class Sewa extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextDescription;
     private javax.swing.JTextField jTextIDproduk;
     // End of variables declaration//GEN-END:variables
+
+    private void showBarcode() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
