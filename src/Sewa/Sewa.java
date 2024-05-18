@@ -20,6 +20,7 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.lowagie.text.pdf.Barcode;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,6 +29,7 @@ import java.sql.ResultSet;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -114,6 +116,18 @@ public class Sewa extends javax.swing.JFrame {
         BufferedImage barcode = generateBarcode(barcodeImg);
         ImageIcon icon = new ImageIcon(barcode);
         jBarcodeView.setIcon(icon);
+    }
+    
+    public void getBarcodeImage(int width, int height, JLabel label, String path) {        
+        try {
+            File file = new File("D:/" + path + ".png");
+            BufferedImage bi = ImageIO.read(file);
+            Image i = bi.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            ImageIcon ii = new ImageIcon(i);
+            label.setIcon(ii);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private BufferedImage generateBarcode(String barcodeIMG) {
@@ -586,8 +600,11 @@ public class Sewa extends javax.swing.JFrame {
             barcode.setType(Linear.CODE128B);
             barcode.setData(jTextIDproduk.getText());
             barcode.setI(11.0f);
-            String path = "0001";
+            String path = jTextIDproduk.getText();
             barcode.renderBarcode("D:\\" + path + ".png");
+            //int width = 261;
+            //int height = 81;
+            getBarcodeImage(261, 81, jBarcodeView, path);
         } catch (Exception e) {
             e.printStackTrace();
         }
