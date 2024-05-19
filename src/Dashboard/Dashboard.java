@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Dashboard;
+
 import Login.Login;
 import Sewa.Sewa;
 import Transaksi.Transaksi;
@@ -17,6 +18,8 @@ import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import javax.swing.table.DefaultTableModel;
 import GajiKaryawan.GajiKaryawan;
+
+
 /**
  *
  * @author abiba
@@ -27,8 +30,6 @@ public class Dashboard extends javax.swing.JFrame {
     Transaksi Transaksi = new Transaksi();
     KoneksiDB KoneksiDB = new KoneksiDB();
     DefaultTableModel dtm = new DefaultTableModel();
-    
-    
     
     public Dashboard(String Username) {
         initComponents();
@@ -67,7 +68,6 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     public void Tanggal() {
-
         Thread p = new Thread() {
             public void run() {
                 for (;;) {
@@ -108,7 +108,7 @@ public class Dashboard extends javax.swing.JFrame {
         try {
             if (rs.next()) {
                 String totalHarga = rs.getString("total_harga");
-                if (totalHarga.length() == 6) {
+                if (totalHarga.length() == 7) {
                     DecimalFormat decimalFormat = new DecimalFormat("#,###");
                     String formattedTotalHarga = decimalFormat.format(Integer.parseInt(totalHarga));
                     jTextTotalPendapatan.setText(formattedTotalHarga);
@@ -139,6 +139,7 @@ public class Dashboard extends javax.swing.JFrame {
     public void AturKolom() {
         dtm.addColumn("ID Pengembalian");
         dtm.addColumn("ID Transaksi");
+        dtm.addColumn("ID_Produk");
         dtm.addColumn("Tanggal");
         dtm.addColumn("Harga");
         dtm.addColumn("Status");
@@ -152,7 +153,7 @@ public class Dashboard extends javax.swing.JFrame {
         ResultSet rs = KoneksiDB.ambilData("SELECT * FROM Pengembalian");
         try {
             while (rs.next()) {
-                dtm.addRow(new Object[]{rs.getString("ID_Pengembalian"), rs.getString("ID_Transaksi"), rs.getString("Tanggal"), rs.getString("Harga"), rs.getString("Status")});
+                dtm.addRow(new Object[]{rs.getString("ID_Pengembalian"), rs.getString("ID_Transaksi"), rs.getString("ID_Produk"),rs.getString("Tanggal"), rs.getString("Harga"), rs.getString("Status")});
             }
             jRiwayat.setModel(dtm);
         } catch (Exception e) {
@@ -189,7 +190,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jGaji = new javax.swing.JButton();
-        jPengguna = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -218,6 +218,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel9.setLayout(new java.awt.BorderLayout());
 
+        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1920, 1080));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -308,7 +309,7 @@ public class Dashboard extends javax.swing.JFrame {
         });
 
         jSewa.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
-        jSewa.setText("Katalog Sewa");
+        jSewa.setText("Stok");
         jSewa.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jSewa.setBorderPainted(false);
         jSewa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -388,8 +389,6 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jPengguna.setText("jLabel12");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -405,10 +404,7 @@ public class Dashboard extends javax.swing.JFrame {
                                 .addComponent(jSewa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                             .addComponent(jJam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLogout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jPengguna, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLogout, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1))
@@ -426,17 +422,15 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jJam, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jPengguna)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(72, 72, 72)
                 .addComponent(jSewa, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addComponent(jTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addComponent(jPengembalian, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addComponent(jGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 231, Short.MAX_VALUE)
                 .addComponent(jLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
         );
@@ -488,7 +482,7 @@ public class Dashboard extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jTextJumlahStok, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextJumlahStok, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -787,7 +781,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JButton jPengembalian;
-    private javax.swing.JLabel jPengguna;
     private javax.swing.JTable jRiwayat;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jSewa;

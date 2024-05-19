@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="140" pageHeight="432" columnWidth="116" leftMargin="13" rightMargin="11" topMargin="0" bottomMargin="0" uuid="03fa0074-4429-4662-ba1b-7f31b25008dc">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM pendapatanharian]]>
+	</queryString>
+	<field name="JumlahTransaksi" class="java.lang.Long"/>
+	<field name="Tanggal" class="java.sql.Date"/>
+	<field name="TotalPendapatan" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="116" height="21" uuid="616b3b8d-7db1-4487-a1d8-154e903b96c5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Segoe UI" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Biru Hijau Production]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="52" width="116" height="27" uuid="6425596a-58c6-472f-867d-9a1dd8b650c5"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Laporan Keuangan Harian]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="59" width="100" height="20" uuid="c81a194d-4952-4355-b3c4-315d25052a57"/>
+				<textFieldExpression><![CDATA[$F{Tanggal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="16" width="116" height="32" uuid="f7ec6d1b-b71c-4f63-84c1-0bc675b40949"/>
+				<textElement textAlignment="Center">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jalan gang sanggar Asri 02 Rembangan  085877549801]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="-5" y="10" width="172" height="20" uuid="072fe789-acce-40ae-85db-1b23085eca4b"/>
+				<text><![CDATA[=============================]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
