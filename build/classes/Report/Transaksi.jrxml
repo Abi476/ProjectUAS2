@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="140" pageHeight="432" columnWidth="116" leftMargin="13" rightMargin="11" topMargin="0" bottomMargin="0" uuid="88e4cf8a-5cf9-49ce-874c-d094e7f0cc49">
 	<property name="ireport.zoom" value="2.2578957202151093"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="217"/>
+	<property name="ireport.y" value="48"/>
 	<parameter name="User" class="java.lang.String"/>
 	<parameter name="IdTransaksi" class="java.lang.String"/>
 	<queryString>

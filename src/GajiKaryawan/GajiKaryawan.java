@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GajiKaryawan;
-
+import Pengembalian.Pengembalian;
 import KoneksiDB.KoneksiDB;
 import java.io.File;
 import static java.lang.Thread.sleep;
@@ -153,9 +153,9 @@ public class GajiKaryawan extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 819, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(357, 357, 357)
+                .addGap(515, 515, 515)
                 .addComponent(jLabelTanggal, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
         );
@@ -263,6 +263,11 @@ public class GajiKaryawan extends javax.swing.JFrame {
         jCetak2.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         jCetak2.setForeground(new java.awt.Color(255, 255, 255));
         jCetak2.setText("Cetak");
+        jCetak2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCetak2ActionPerformed(evt);
+            }
+        });
 
         jPendapatanBulanan.setEditable(false);
         jPendapatanBulanan.setBackground(new java.awt.Color(204, 204, 204));
@@ -358,6 +363,11 @@ public class GajiKaryawan extends javax.swing.JFrame {
         jCetak3.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         jCetak3.setForeground(new java.awt.Color(255, 255, 255));
         jCetak3.setText("Cetak");
+        jCetak3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCetak3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -399,6 +409,11 @@ public class GajiKaryawan extends javax.swing.JFrame {
         );
 
         jButton1.setText("Kembali");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -527,6 +542,8 @@ public class GajiKaryawan extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructors();
             HashMap<String, Object> param = new HashMap<>();
             param.put("TotalPendapan", jComboHarian.getSelectedItem());
+            param.put("TotalTransaksi", jComboHarian.getSelectedItem());
+            param.put("Tanggal", jComboHarian.getSelectedItem());
             KoneksiDB.koneksi();
             JasperPrint print = JasperFillManager.fillReport(f.getAbsolutePath(), param, KoneksiDB.con);
             JasperViewer.viewReport(print, false);
@@ -534,6 +551,47 @@ public class GajiKaryawan extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jCetak1ActionPerformed
+
+    private void jCetak2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCetak2ActionPerformed
+        // TODO add your handling code here:
+         try {
+            File f = new File("src/Report/ReportPendapatanBulanan.jasper");
+            //String file = "D:\\netbeans document\\ProjectUAS2\\src\\ReportGaji\\ReportHarian.jrxml";
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructors();
+            HashMap<String, Object> param = new HashMap<>();
+            param.put("Bulan", jComboBulanan.getSelectedItem());
+            param.put("Tahun", jComboBulanan.getSelectedItem());
+            param.put("TotalPendapatan", jComboBulanan.getSelectedItem());
+            KoneksiDB.koneksi();
+            JasperPrint print = JasperFillManager.fillReport(f.getAbsolutePath(), param, KoneksiDB.con);
+            JasperViewer.viewReport(print, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jCetak2ActionPerformed
+
+    private void jCetak3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCetak3ActionPerformed
+        // TODO add your handling code here:
+         try {
+            File f = new File("src/Report/ReportGajiBulanan.jasper");
+            //String file = "D:\\netbeans document\\ProjectUAS2\\src\\ReportGaji\\ReportHarian.jrxml";
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructors();
+            HashMap<String, Object> param = new HashMap<>();
+            param.put("Bulan", jComboGajiBulanan.getSelectedItem());
+            KoneksiDB.koneksi();
+            JasperPrint print = JasperFillManager.fillReport(f.getAbsolutePath(), param, KoneksiDB.con);
+            JasperViewer.viewReport(print, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jCetak3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Pengembalian Pengembalian = new Pengembalian();
+        Pengembalian.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

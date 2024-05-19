@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="140" pageHeight="432" columnWidth="116" leftMargin="13" rightMargin="11" topMargin="0" bottomMargin="0" uuid="03fa0074-4429-4662-ba1b-7f31b25008dc">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="140" pageHeight="360" columnWidth="116" leftMargin="13" rightMargin="11" topMargin="0" bottomMargin="0" uuid="03fa0074-4429-4662-ba1b-7f31b25008dc">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -15,15 +15,22 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="10" width="116" height="21" uuid="616b3b8d-7db1-4487-a1d8-154e903b96c5"/>
+				<reportElement x="0" y="22" width="116" height="29" uuid="f7ec6d1b-b71c-4f63-84c1-0bc675b40949"/>
 				<textElement textAlignment="Center">
-					<font fontName="Segoe UI" size="10" isBold="true"/>
+					<font size="8" isItalic="true"/>
 				</textElement>
+				<text><![CDATA[Jalan gang sanggar Asri 02 Rembangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="12" width="116" height="20" uuid="7f22deec-3d58-4470-9464-37720b119ac8"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[Biru Hijau Production]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="52" width="116" height="27" uuid="6425596a-58c6-472f-867d-9a1dd8b650c5"/>
-				<textElement textAlignment="Center"/>
+				<reportElement x="0" y="51" width="116" height="20" uuid="55a6dee4-485a-4843-bb4c-dd93c3d86803"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
 				<text><![CDATA[Laporan Keuangan Harian]]></text>
 			</staticText>
 		</band>
@@ -31,37 +38,88 @@
 	<pageHeader>
 		<band height="35" splitType="Stretch">
 			<textField>
-				<reportElement x="12" y="59" width="100" height="20" uuid="c81a194d-4952-4355-b3c4-315d25052a57"/>
+				<reportElement x="45" y="15" width="44" height="20" uuid="2d0868ed-b289-423a-b72c-26f0e86f71ac"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Tanggal}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="15" width="45" height="20" uuid="73d37b6e-5360-4911-aab4-f138d1805ab6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tanggal :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="116" height="20" uuid="5535bd85-21c5-46aa-be6e-85f519c7ac23"/>
+				<text><![CDATA[--------------------------------------]]></text>
+			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="117" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="16" width="116" height="32" uuid="f7ec6d1b-b71c-4f63-84c1-0bc675b40949"/>
-				<textElement textAlignment="Center">
-					<font size="8" isItalic="true"/>
+				<reportElement x="0" y="0" width="116" height="20" uuid="a2a94b46-304e-4dac-9a13-ead1ec144144"/>
+				<text><![CDATA[--------------------------------------]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="82" width="116" height="20" uuid="8ceef146-5629-4303-9001-5733b6bcffb5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{TotalPendapatan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="62" width="116" height="20" uuid="7787ff55-5a5d-4205-a92a-c17c056855e6"/>
+				<textElement>
+					<font size="8"/>
 				</textElement>
-				<text><![CDATA[Jalan gang sanggar Asri 02 Rembangan  085877549801]]></text>
+				<text><![CDATA[Total Pendapatan Harian:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="42" width="116" height="20" uuid="53451cd2-d3d7-4744-bdbe-4a929c8ea98b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{JumlahTransaksi}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="22" width="116" height="20" uuid="2669eb37-b115-432d-997b-046562ac8eed"/>
+				<text><![CDATA[Total Transaksi :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="97" width="116" height="20" uuid="6177b4af-0d8f-43d2-83b3-2dd9788fab93"/>
+				<text><![CDATA[--------------------------------------]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
-			<staticText>
-				<reportElement x="-5" y="10" width="172" height="20" uuid="072fe789-acce-40ae-85db-1b23085eca4b"/>
-				<text><![CDATA[=============================]]></text>
-			</staticText>
-		</band>
+		<band height="9" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="116" height="20" uuid="52815d1e-5f82-4b83-979b-9d3cc3fce3ec"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Terima Kasih ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="11" width="116" height="20" uuid="b81b98d9-67e7-44f7-a183-f1a3b70aa617"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Semangat Kembali Untuk Besok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="116" height="20" uuid="244b004f-9caa-48ce-872f-640d58ac6111"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[:0]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>

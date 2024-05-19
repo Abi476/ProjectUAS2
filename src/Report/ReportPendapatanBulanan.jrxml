@@ -1,56 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="90dddca4-b660-4728-81e6-eb5cb2c89c72">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="140" pageHeight="360" columnWidth="116" leftMargin="13" rightMargin="11" topMargin="0" bottomMargin="0" uuid="90dddca4-b660-4728-81e6-eb5cb2c89c72">
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT * FROM stok]]>
+	<queryString>
+		<![CDATA[SELECT * FROM pendapatanbulanan]]>
 	</queryString>
-	<field name="ID_Produk" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Nama_Produk" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Jenis" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Jumlah_Stok" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Harga" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="Deskripsi" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="Bulan" class="java.lang.Integer"/>
+	<field name="Tahun" class="java.lang.Integer"/>
+	<field name="TotalPendapatan" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="84" splitType="Stretch">
 			<staticText>
-				<reportElement x="263" y="58" width="100" height="20" uuid="b9974177-1856-4e4e-b34d-42347d00ef05"/>
-				<text><![CDATA[Static text]]></text>
+				<reportElement x="0" y="14" width="116" height="20" uuid="13e5c819-a46b-4e29-b496-18b39a86a8ea"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Biru Hijau Production]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="24" width="116" height="29" uuid="df38bdf6-b09a-4f7f-9e16-9a987c9f218c"/>
+				<textElement textAlignment="Center">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Jalan gang sanggar Asri 02 Rembangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="53" width="116" height="20" uuid="6cc8a8f2-8ce0-4d14-94b4-a0fb04d388ba"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Laporan Keuangan Bulanan]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="146" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="126" height="20" uuid="0fa48d32-7c78-4462-b9d0-146857959fba"/>
+				<text><![CDATA[-----------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="41" height="20" uuid="dab2a8e9-95a9-4041-bc15-e88af6d60e9a"/>
+				<text><![CDATA[Bulan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="41" y="20" width="75" height="20" uuid="7cceab03-9aee-4a45-a38a-336e1bd319d6"/>
+				<textFieldExpression><![CDATA[$F{Bulan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="40" width="41" height="20" uuid="112f5565-a92c-4e1d-917d-ee75bdcf6357"/>
+				<text><![CDATA[Tahun :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="41" y="40" width="75" height="20" uuid="122c930a-f024-462c-a32e-f1279d353e2e"/>
+				<textFieldExpression><![CDATA[$F{Tahun}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="60" width="126" height="20" uuid="667b9d3c-1d14-419b-afb4-063bc7ded6da"/>
+				<text><![CDATA[-----------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="116" height="20" uuid="123f45d8-61d1-46cb-bde4-2a4234b07c52"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[TotalPendapatan Bulanan :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="100" width="116" height="20" uuid="c73dddaa-ef17-428a-97ad-ca30c0849d40"/>
+				<textFieldExpression><![CDATA[$F{TotalPendapatan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="120" width="126" height="20" uuid="05c188e8-7b5c-4216-a21c-ca509a8a04c1"/>
+				<text><![CDATA[-----------------------------------------]]></text>
+			</staticText>
+		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="116" height="20" uuid="d2290ff8-aa83-4afa-93d2-ccaa19be6127"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Terima Kasih ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="10" width="116" height="28" uuid="c20f22d4-e8ba-41e2-b55a-9c17f2c99132"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Lebih Semangat Untuk Bulan Depan]]></text>
+			</staticText>
+		</band>
 	</summary>
 </jasperReport>
