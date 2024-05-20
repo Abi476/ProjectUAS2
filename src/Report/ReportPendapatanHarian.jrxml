@@ -3,8 +3,9 @@
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="tgl" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT * FROM pendapatanharian]]>
+		<![CDATA[SELECT * FROM pendapatanharian where tanggal = $P{tgl}]]>
 	</queryString>
 	<field name="JumlahTransaksi" class="java.lang.Long"/>
 	<field name="Tanggal" class="java.sql.Date"/>

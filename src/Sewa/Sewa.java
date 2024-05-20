@@ -262,7 +262,6 @@ public class Sewa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(1920, 1080));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

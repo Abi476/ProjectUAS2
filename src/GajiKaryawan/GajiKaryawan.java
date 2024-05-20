@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GajiKaryawan;
+
 import Pengembalian.Pengembalian;
 import KoneksiDB.KoneksiDB;
 import java.io.File;
@@ -541,9 +542,9 @@ public class GajiKaryawan extends javax.swing.JFrame {
             //String file = "D:\\netbeans document\\ProjectUAS2\\src\\ReportGaji\\ReportHarian.jrxml";
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructors();
             HashMap<String, Object> param = new HashMap<>();
-            param.put("TotalPendapan", jComboHarian.getSelectedItem());
-            param.put("TotalTransaksi", jComboHarian.getSelectedItem());
-            param.put("Tanggal", jComboHarian.getSelectedItem());
+//            param.put("TotalPendapan", jComboHarian.getSelectedItem());
+            param.put("tgl", jComboHarian.getSelectedItem());
+//            param.put("Tanggal", jComboHarian.getSelectedItem());
             KoneksiDB.koneksi();
             JasperPrint print = JasperFillManager.fillReport(f.getAbsolutePath(), param, KoneksiDB.con);
             JasperViewer.viewReport(print, false);
@@ -554,14 +555,14 @@ public class GajiKaryawan extends javax.swing.JFrame {
 
     private void jCetak2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCetak2ActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             File f = new File("src/Report/ReportPendapatanBulanan.jasper");
             //String file = "D:\\netbeans document\\ProjectUAS2\\src\\ReportGaji\\ReportHarian.jrxml";
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructors();
             HashMap<String, Object> param = new HashMap<>();
             param.put("Bulan", jComboBulanan.getSelectedItem());
-            param.put("Tahun", jComboBulanan.getSelectedItem());
-            param.put("TotalPendapatan", jComboBulanan.getSelectedItem());
+            // param.put("Tahun", jComboBulanan.getSelectedItem());
+            // param.put("TotalPendapatan", jComboBulanan.getSelectedItem());
             KoneksiDB.koneksi();
             JasperPrint print = JasperFillManager.fillReport(f.getAbsolutePath(), param, KoneksiDB.con);
             JasperViewer.viewReport(print, false);
@@ -572,7 +573,7 @@ public class GajiKaryawan extends javax.swing.JFrame {
 
     private void jCetak3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCetak3ActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             File f = new File("src/Report/ReportGajiBulanan.jasper");
             //String file = "D:\\netbeans document\\ProjectUAS2\\src\\ReportGaji\\ReportHarian.jrxml";
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructors();

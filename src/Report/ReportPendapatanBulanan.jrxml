@@ -91,7 +91,7 @@
 		<band splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="55" splitType="Stretch">
+		<band height="71" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="116" height="20" uuid="d2290ff8-aa83-4afa-93d2-ccaa19be6127"/>
 				<textElement textAlignment="Center">
@@ -100,7 +100,7 @@
 				<text><![CDATA[Terima Kasih ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="10" width="116" height="28" uuid="c20f22d4-e8ba-41e2-b55a-9c17f2c99132"/>
+				<reportElement x="0" y="20" width="116" height="28" uuid="c20f22d4-e8ba-41e2-b55a-9c17f2c99132"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>

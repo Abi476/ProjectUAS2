@@ -233,7 +233,6 @@ public class Transaksi extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanelTransaksi.setBackground(new java.awt.Color(204, 204, 255));
         jPanelTransaksi.setMaximumSize(new java.awt.Dimension(1920, 1080));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
