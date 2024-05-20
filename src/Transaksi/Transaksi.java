@@ -759,13 +759,13 @@ public class Transaksi extends javax.swing.JFrame {
                 jNamaProduk.setText(rs.getString("Nama_Produk"));
                 jJenis.setText(rs.getString("Jenis"));
                 jHarga.setText(rs.getString("Harga"));
-
+                String txt = String.valueOf(jComboEstimasi.getSelectedItem());
+                String[] arr = txt.split(" Hari");
+                jHarga.setText(String.valueOf(Integer.parseInt(jHarga.getText()) * Integer.parseInt(arr[0])));
             } catch (Exception e) {
+                System.err.println("Ya masukkan dulu harganya");
                 //                e.printStackTrace();
             }
-            String txt = String.valueOf(jComboEstimasi.getSelectedItem());
-            String[] arr = txt.split(" Hari");
-            jHarga.setText(String.valueOf(Integer.parseInt(jHarga.getText()) * Integer.parseInt(arr[0])));
         }
     }//GEN-LAST:event_jComboIDBoxActionPerformed
 

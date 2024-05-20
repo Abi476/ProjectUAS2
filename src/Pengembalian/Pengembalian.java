@@ -155,7 +155,7 @@ public class Pengembalian extends javax.swing.JFrame {
     public void jComboTanggal() {
         LocalDate tanggalSekarang = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        for (int i = -5; i < 7; i++) {
+        for (int i = -7; i < 7; i++) {
             String tanggalTerformat = tanggalSekarang.plusDays(i).format(formatter);
             jComboTanggal1.addItem(tanggalTerformat);
         }
